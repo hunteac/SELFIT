@@ -1,21 +1,23 @@
 <template>
-  <div class="carousel-item text-center" :class="active">
-      <iframe
-        width="800"
-        height="500"
+  <div class="carousel-item text-center" :class="{ active: isActive }">
+    <iframe
         :src="videoURL"
         title="YouTube video player"
-        frameborder="1"
+        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
-      ></iframe>
-      <h5 class="text-center">{{ videoTitle }}</h5>
+    ></iframe>
+    <h6 class="text-center">{{ videoTitle }}</h6>
+    <button class="btn btn-dark add-to-cart-btn" @click="addToCart(video)">
+      담기
+    </button>
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
 import _ from "lodash";
+
 const props = defineProps({
   video: {
     type: Object,
@@ -23,15 +25,15 @@ const props = defineProps({
   },
   index: Number,
   current: Number,
+  active: Boolean,
 });
+
 const videoURL = computed(() => {
   const videoId = props.video.id.videoId;
   return `https://www.youtube.com/embed/${videoId}`;
 });
 
-const active = computed(() => {
-  if (props.current == props.index) return { active: true};
-});
+const isActive = computed(() => props.current === props.index);
 
 const videoTitle = computed(() => {
   return _.unescape(props.video.snippet.title);

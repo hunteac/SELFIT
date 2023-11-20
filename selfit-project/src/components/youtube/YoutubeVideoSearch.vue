@@ -26,4 +26,9 @@ const search = function () {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: 500px; /* 예시로 500px 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+</style>

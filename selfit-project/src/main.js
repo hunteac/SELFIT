@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import BootstrapVue from 'bootstrap-vue'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
@@ -16,6 +15,6 @@ app.use(router);
 
 app.mount("#app");
 
-import "bootstrap/dist/js/bootstrap.js";
+// import "bootstrap/dist/js/bootstrap.js";
 
-Vue.use(BootstrapVue);
+// Vue.use(BootstrapVue);

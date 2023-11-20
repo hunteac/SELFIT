@@ -55,13 +55,13 @@ const router = createRouter({
       path: "/calender",
       name: "calender",
       component: CalenderView,
-      children : [
-        {
-          path: "",
-          name: "Calender",
-          component: Calender,
-        },
-      ],
+      // children : [
+      //   {
+      //     path: "",
+      //     name: "Calender",
+      //     component: Calender,
+      //   },
+      // ],
     }
   ],
 });

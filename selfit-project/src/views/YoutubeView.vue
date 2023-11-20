@@ -1,8 +1,15 @@
 <template>
   <div>
-    <h2 class="text-center"><i class="bi bi-youtube" style="color: red;"></i> YoutubeView</h2>
-    <YoutubeVideoSearch />
     <hr>
+    <br>
+
+    <h2 class="text-center"><i class="bi bi-youtube" style="color: red;"></i> 유튜브 검색</h2>
+    <br>
+    <YoutubeVideoSearch />
+    <br>
+    <br>
+
+
     <YoutubeVideoList />
   </div>
 </template>
