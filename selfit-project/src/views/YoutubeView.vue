@@ -1,8 +1,5 @@
 <template>
   <div class="video-container">
-    <hr>
-    <br>
-
     <h2 class="text-center"><i class="bi bi-youtube" style="color: red;"></i> 유튜브 검색</h2>
     <br>
     <YoutubeVideoSearch />

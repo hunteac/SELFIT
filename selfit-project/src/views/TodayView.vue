@@ -1,7 +1,5 @@
 <template>
   <div>
-    <hr />
-    <br />
     <h2>오늘의 운동</h2>
     <FitPerDay />
   </div>

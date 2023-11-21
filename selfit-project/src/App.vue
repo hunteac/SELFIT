@@ -3,10 +3,13 @@
       <span v-if="chk">
         <THeHeaderNav />
       </span>
-      <button @click="chk = !chk">on/off</button>
-      <RouterView />
-
     </div>
+    <span class="button-container">
+      <button  @click="chk = !chk">{{ chk ? '올리기' : '내리기' }}</button>
+    </span>
+  <hr>
+  <br>
+  <RouterView />
 </template>
 
 <script setup>
@@ -15,4 +18,10 @@ import { ref } from "vue";
 const chk = ref(true);
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+</style>

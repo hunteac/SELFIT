@@ -1,50 +1,54 @@
 <template>
   <div class="limiter">
-    <div class="container-login100" >
+    <div class="container-login100">
       <div class="wrap-login100">
         <form class="login100-form validate-form">
-					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
-					</span>
+          <span class="login100-form-logo">
+            <i class="zmdi zmdi-landscape"></i>
+          </span>
 
-          <span class="login100-form-title p-b-34 p-t-27">
-						Log in
-					</span>
+          <span class="login100-form-title p-b-34 p-t-27"> Log in </span>
 
-          <div class="wrap-input100 validate-input" data-validate = "Enter username">
-            <input class="input100" type="text" name="username" placeholder="Username">
+          <div class="wrap-input100 validate-input" data-validate="Enter id">
+            <input class="input100" type="text" name="id" placeholder="id" />
             <span class="focus-input100" data-placeholder="&#xf207;"></span>
           </div>
 
-          <div class="wrap-input100 validate-input" data-validate="Enter password">
-            <input class="input100" type="password" name="pass" placeholder="Password">
+          <div
+              class="wrap-input100 validate-input"
+              data-validate="Enter password"
+          >
+            <input
+                class="input100"
+                type="password"
+                name="pwd"
+                placeholder="Password"
+            />
             <span class="focus-input100" data-placeholder="&#xf191;"></span>
           </div>
 
           <div class="contact100-form-checkbox">
-            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-            <label class="label-checkbox100" for="ckb1">
-              Remember me
-            </label>
+            <input
+                class="input-checkbox100"
+                id="ckb1"
+                type="checkbox"
+                name="remember-me"
+            />
+            <label class="label-checkbox100" for="ckb1"> Remember me </label>
           </div>
 
           <div class="container-login100-form-btn">
-            <button class="login100-form-btn">
-              Login
-            </button>
+            <button class="login100-form-btn">Login</button>
           </div>
 
           <div class="text-center p-t-90">
-            <a class="txt1" href="#">
-              Forgot Password?
-            </a>
+            <a class="txt1" href="#"> Forgot Password? </a>
           </div>
         </form>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 
 </script>
@@ -54,7 +58,7 @@
 .container-login100 {
   background-image: url('src/assets/bg-01.jpg'); /* 배경 이미지 경로 설정 */
   background-size: cover; /* 배경 이미지 크기 조절 */
-  opacity: 0.8; /* 투명도 설정 (0.0 완전 투명 ~ 1.0 완전 불투명) */
+  opacity: 0.9; /* 투명도 설정 (0.0 완전 투명 ~ 1.0 완전 불투명) */
 }
 
 
