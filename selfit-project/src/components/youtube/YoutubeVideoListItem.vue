@@ -41,4 +41,5 @@ const videoTitle = computed(() => {
 </script>
 
 <style scoped>
+
 </style>

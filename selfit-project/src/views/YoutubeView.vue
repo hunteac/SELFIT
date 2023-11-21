@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="video-container">
     <hr>
     <br>
 
@@ -8,8 +8,6 @@
     <YoutubeVideoSearch />
     <br>
     <br>
-
-
     <YoutubeVideoList />
   </div>
 </template>

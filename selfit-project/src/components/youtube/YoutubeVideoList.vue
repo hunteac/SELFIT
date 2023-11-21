@@ -4,7 +4,7 @@
       <br>
       <br>
       아직 검색된 결과가 없습니다.
-      <br>검색어를 입력해주세요.
+      <br><br>검색어를 입력해주세요.
     </h4>
     <div v-else>
       <div id="youtube-carousel" class="carousel slide carousel-dark">
@@ -84,13 +84,30 @@ const next = function () {
 .carousel-control-next {
   right: -100px; /* Adjust as needed to move outside the grid */
 }
-.carousel-control-prev {
-  color: red;
-  font-size: 24px;
+
+.carousel-control-prev, .carousel-control-next {
+  top: calc(50% - 20px); /* Adjust the value to better align with the video size */
 }
-.carousel-control-next {
-  color: red;
-  font-size: 24px;
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0; /* Collapse the container to just the padding */
 }
 
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  flex: 0 0 50%; /* Adjust this to change how much space the column takes up */
+  max-width: 50%; /* Same as above */
+}
 </style>

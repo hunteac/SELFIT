@@ -6,8 +6,8 @@ import BoardList from "@/components/board/BoardList.vue";
 import BoardCreate from "@/components/board/BoardCreate.vue";
 import BoardDetail from "@/components/board/BoardDetail.vue";
 import BoardUpdate from "@/components/board/BoardUpdate.vue";
-import CalenderView from "@/views/CalenderView.vue";
-import Calender from "@/components/calender/Calender.vue";
+// import CalenderView from "@/views/CalenderView.vue";
+// import Calender from "@/components/calender/Calender.vue";
 
 
 const router = createRouter({
@@ -51,18 +51,18 @@ const router = createRouter({
 
       ],
     },
-    {
-      path: "/calender",
-      name: "calender",
-      component: CalenderView,
-      // children : [
-      //   {
-      //     path: "",
-      //     name: "Calender",
-      //     component: Calender,
-      //   },
-      // ],
-    }
+    // {
+    //   path: "/calender",
+    //   name: "calender",
+    //   component: CalenderView,
+    //   children : [
+    //     {
+    //       path: "",
+    //       name: "Calender",
+    //       component: Calender,
+    //     },
+    //   ],
+    // }
   ],
 });
 

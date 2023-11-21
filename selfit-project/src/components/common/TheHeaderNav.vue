@@ -39,13 +39,15 @@ nav {
 nav a {
     font-weight: bold;
     text-decoration: none;
-    color: #8AAAE5;
+    //color: #8AAAE5;
+    color: #0A174E;
     font-size: 35px;
     letter-spacing: 2px;
     margin-right: 40px;
 }
 
 nav a.router-link-exact-active {
-    color:#F3A950;
+    //color:#F3A950;
+    color: #F5D042 ;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="text-center">
-            <h2 class="my-h2 my-underline">BoardView</h2>
+
         </div>
         <RouterView />
     </div>
