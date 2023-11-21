@@ -3,7 +3,7 @@
         <header>
           <img src="@/assets/selfit_logo.png" alt="SELFIT 로고" class="logo">
             <nav>
-                <RouterLink to="/"> Today's FIT </RouterLink>
+                <RouterLink to="/today"> Today's FIT </RouterLink>
                 <RouterLink to="/youtube"> VideoSearch </RouterLink>
                 <RouterLink :to="{ name: 'boardList' }"> My Routine</RouterLink>
 <!--                <RouterLink :to="{ name: 'calender' }">캘린더 보기</RouterLink> |-->
