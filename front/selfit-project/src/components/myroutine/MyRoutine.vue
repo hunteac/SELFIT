@@ -121,13 +121,6 @@ const storeRoutine = function () {
 body {
   margin: 0;
 }
-div {
-  display: flex;
-  flex-direction: row;
-  align-items: center; /* 가로 방향 중앙 정렬 */
-  justify-content: center; /* 세로 방향 중앙 정렬 */
-  box-sizing: border-box;
-}
 .black-bg {
   width: 100%;
   height: 100%;
@@ -147,6 +140,7 @@ div {
   justify-content: space-around; /* 버튼들 사이에 동일한 간격을 유지 */
   width: 60%; /* 전체 페이지의 70% 너비를 차지 */
   margin: 0 auto; /* 수평 중앙 정렬 */
+  margin-bottom: 20px;
 }
 
 .button-container button {

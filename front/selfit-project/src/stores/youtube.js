@@ -35,7 +35,6 @@ export const useVideoStore = defineStore("select", () => {
       userId: data.userId,
       videoId: data.videoId,
     };
-    console.log("video: " + video.value);
     axios
       .post("http://localhost:8080/videoapi/video", video, {
         header: { "Content-type": "application/json" },
