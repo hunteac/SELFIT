@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.selfit.model.dao.GrassDao">
+
+	<!-- 잔디 정보를 저장한다. -->
+	<insert id="insertGrass" parameterType="Grass">
+		INSERT INTO grass (userid, date)
+		VALUES (#{userId}, #{date});
+	</insert>
+
+	<!-- 유저의 month가 일치하는 잔디 정보를 가져온다. -->
+	<select id="selectAllGrassesByMonth" parameterType="String" resultType="Grass">
+		SELECT * FROM grass
+		WHERE userid = #{userId} AND MONTH(date) = #{month};
+	</select>
+
+	<!-- 유저의 모든 잔디 정보를 다 가져온다. -->
+	<select id="selectAllGrasses" parameterType="String" resultType="Grass">
+		SELECT * FROM grass
+		WHERE userid = #{userId};
+	</select>
+	
+</mapper>

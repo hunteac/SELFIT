@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.selfit.model.dao.RoutineVideoDao">
+
+	<!-- 루틴 정보를 저장한다. -->
+	<insert id="insertRoutineVideo" parameterType="RoutineVideo">
+		INSERT INTO routinevideo (userid, videoid, memo, day, num, start, end)
+		VALUES (#{userId}, #{videoId}, #{memo}, #{day}, #{num}, #{start}, #{end});
+	</insert>
+
+	<!-- day가 일치하는 루틴의 정보를 가져온다. -->
+	<select id="selectRoutineByDay" parameterType="String" resultType="RoutineVideo">
+		SELECT * FROM routinevideo
+		WHERE userid = #{userId} AND day = #{day};
+	</select>
+
+	<!-- 모든 루틴 정보를 다 가져온다. -->
+	<select id="selectAllRoutines" parameterType="String" resultType="RoutineVideo">
+		SELECT * FROM routinevideo
+		WHERE userid = #{userId};
+	</select>
+
+	<!-- 루틴 정보를 업데이트 한다. -->
+	<update id="updateRoutineVideo" parameterType="RoutineVideo">
+		UPDATE routinevideo
+		SET userid = #{userId}, videoid = #{videoId}, 
+		memo = #{memo}, day = #{day}, start = #{start}, end = #{end}
+		WHERE userid = #{userId} AND videoid = #{videoId};
+	</update>
+	
+	<!-- day와 routinevideoid가 일치하는 루틴 정보를 삭제한다. -->
+	<delete id="deleteRoutineVideo" parameterType="String">
+		DELETE FROM routinevideo
+		WHERE userid = #{userId} AND videoid = #{videoId} AND day = #{day};
+	</delete>
+	
+</mapper>
