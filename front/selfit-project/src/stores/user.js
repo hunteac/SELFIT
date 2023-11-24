@@ -53,7 +53,6 @@ export const useLoginStore = defineStore("login", () => {
       })
       .then((res) => {
         if (res.data.id == data.id) {
-          alert("로그인 성공");
           loginId.value = id;
           userName.value = res.data.userName;
           sessionStorage.setItem("loginId", loginId.value);

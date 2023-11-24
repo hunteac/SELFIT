@@ -3,11 +3,15 @@
     내 루틴은 내가 만든다! 셀핏
   </span>
   <span
+    class="about"
     style="
       cursor: pointer;
       font-size: 20px;
+      color: #f0edcc;
       margin-left: 250px;
-      background-color: #b224ef;
+      padding-left: 1%;
+      padding-right: 1%;
+      background-color: #02343f;
     "
     @click="pushAbout"
   >
@@ -22,8 +26,14 @@
       가입하기
     </button>
   </div>
-  <div style="display: flex; justify-content: center">
-    <div>{{ userName }}님 오늘도 즐거운 운동되세요!!!</div>
+  <div style="display: flex; justify-content: center; font-size: 30px">
+    <div v-if="loginChk">
+      <span class="highlight">{{ userName }}</span
+      >님 오늘도 즐거운 운동되세요!
+    </div>
+    <div v-if="!loginChk">
+      <span class="highlight"></span>오늘도 즐거운 운동되세요!
+    </div>
   </div>
 </template>
 
@@ -33,8 +43,6 @@ import router from "@/router";
 
 const userName = ref(sessionStorage.getItem("userName"));
 const loginChk = ref(false);
-
-console.log(sessionStorage.length);
 
 if (
   sessionStorage.length === 0 ||
@@ -64,5 +72,8 @@ const pushRegister = function () {
   background-color: white;
   font-size: 30px;
   margin: 1%;
+}
+.highlight {
+  color: rgb(8, 0, 122); /* 원하는 색상으로 설정 */
 }
 </style>

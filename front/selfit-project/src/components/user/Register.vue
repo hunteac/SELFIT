@@ -4,11 +4,14 @@
       <div class="wrap-login100">
         <form v-on:submit.prevent="join" class="login100-form validate-form">
           <span class="login100-form-logo">
-                        <img src="@/assets/selfit_logo.png"
-                             alt="SELFIT 로고" class="logo"/>
+            <img
+              src="@/assets/selfit_logo.png"
+              alt="SELFIT 로고"
+              class="logo"
+            />
           </span>
 
-          <span class="login100-form-title p-b-34 p-t-27"> Sign up </span>
+          <span class="login100-form-title p-b-34 p-t-27"> 가입하기 </span>
 
           <div class="wrap-input100 validate-input" data-validate="Enter id">
             <input
@@ -140,7 +143,7 @@ const join = function () {
 
 <style>
 .container-login100 {
-  background-image: url("../../assets/bg-02.jpg"); /* 배경 이미지 경로 설정 */
+  background-image: url("src/assets/bg-01.jpg"); /* 배경 이미지 경로 설정 */
   background-size: cover; /* 배경 이미지 크기 조절 */
   opacity: 0.8; /* 투명도 설정 (0.0 완전 투명 ~ 1.0 완전 불투명) */
 }
@@ -148,7 +151,6 @@ const join = function () {
   height: 130px;
   width: 130px;
 }
-
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
@@ -162,7 +164,6 @@ const join = function () {
 body,
 html {
   height: 100%;
-
 }
 
 /*---------------------------------------------*/

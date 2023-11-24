@@ -40,9 +40,6 @@ export const useVideoStore = defineStore("select", () => {
         header: { "Content-type": "application/json" },
       })
       .then((res) => {
-        if (res.data == "success") {
-          alert("영상이 성공적으로 등록됐습니다.");
-        }
         videoResult.value = res.data;
       });
   };

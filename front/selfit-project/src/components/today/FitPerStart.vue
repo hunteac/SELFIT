@@ -53,19 +53,22 @@ onMounted(() => {
   getDayRoutine.dayRoutineMethod(todayLabel);
 });
 
-onUpdated(() => {
-  var temp = sessionStorage.getItem("num") - 1;
+onUpdated(async () => {
+  let temp = Number(sessionStorage.getItem("num")) - 1;
 
-  if (getDayRoutine.dayRoutineResult.length != 0) {
+  if (getDayRoutine.dayRoutineResult.length !== 0) {
     const result = getDayRoutine.dayRoutineResult.sort((a, b) => a.num - b.num);
     if (temp < result.length) {
-      var cnt = result[[temp]].end - result[[temp]].start;
+      const cnt = result[temp].end - result[temp].start;
 
-      setTimeout(() => {
-        temp = sessionStorage.getItem("num");
-        sessionStorage.setItem("num", ++temp);
-        location.reload();
-      }, cnt * 1000);
+      console.log(cnt);
+
+      // setTimeout을 Promise로 감싸서 동기적으로 처리
+      await new Promise((resolve) => setTimeout(resolve, cnt * 1000));
+
+      temp = Number(sessionStorage.getItem("num"));
+      sessionStorage.setItem("num", temp + 1);
+      location.reload();
     } else {
       sessionStorage.setItem("num", 1);
       router.push("/complete");

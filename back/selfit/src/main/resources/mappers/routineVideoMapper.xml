@@ -10,13 +10,13 @@
 	</insert>
 
 	<!-- day가 일치하는 루틴의 정보를 가져온다. -->
-	<select id="selectRoutineByDay" parameterType="String" resultType="RoutineVideo">
+	<select id="selectRoutineByDay" parameterType="string" resultType="RoutineVideo">
 		SELECT * FROM routinevideo
 		WHERE userid = #{userId} AND day = #{day};
 	</select>
 
 	<!-- 모든 루틴 정보를 다 가져온다. -->
-	<select id="selectAllRoutines" parameterType="String" resultType="RoutineVideo">
+	<select id="selectAllRoutines" parameterType="string" resultType="RoutineVideo">
 		SELECT * FROM routinevideo
 		WHERE userid = #{userId};
 	</select>
@@ -30,9 +30,9 @@
 	</update>
 	
 	<!-- day와 routinevideoid가 일치하는 루틴 정보를 삭제한다. -->
-	<delete id="deleteRoutineVideo" parameterType="String">
+	<delete id="deleteRoutineVideo" parameterType="string">
 		DELETE FROM routinevideo
-		WHERE userid = #{userId} AND videoid = #{videoId} AND day = #{day};
+		WHERE userid = #{userId} AND day = #{day} AND videoid LIKE CONCAT('%', #{videoId}, '%');
 	</delete>
 	
 </mapper>

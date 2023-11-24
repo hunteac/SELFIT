@@ -8,7 +8,7 @@
   </div>
   <br />
   <br />
-  <div>오늘 루틴을 완료했습니다!</div>
+  <div style="font-size: 40px">오늘 루틴을 완료했습니다!</div>
 </template>
 
 <script setup></script>
@@ -17,6 +17,5 @@
 div {
   display: flex;
   justify-content: center;
-  font-size: 20px;
 }
 </style>

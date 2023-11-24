@@ -43,9 +43,7 @@ public class VideoRestController {
 	@GetMapping("/video/{userId}")
 	@ApiOperation(value = "유저의 등록된 모든 비디오 정보를 반환한다.", response = Video.class)
 	public ResponseEntity<?> selectAllVideos(@PathVariable String userId) {
-		System.out.println("userID : " + userId);
 		List<Video> list = videoService.selectAllVideos(userId);
-		System.out.println(list.toString());
 		if (list == null || list.size() == 0) {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		} else {

@@ -9,42 +9,83 @@
         {{ day }}
       </button>
     </div>
-    <div class="videos-container" v-if="getVideoList.videoListResult">
-      <span
-        class="video-container"
-        v-for="video in getVideoList.videoListResult"
-        :key="video.videoId"
-      >
-        <div>
-          <iframe
-            class="video"
-            id="videoList"
-            title="iframe Example 2"
-            width="400"
-            height="300"
-            style="border: none"
-            :src="video.videoId"
-          ></iframe>
-        </div>
-        <div
-          class="store-button"
-          @click="
-            isRoutineDetail = true;
-            videoURL = video.videoId;
-          "
+    <div v-if="allChk">
+      <div class="videos-container" v-if="getVideoList.videoListResult">
+        <span
+          class="video-container"
+          v-for="video in getVideoList.videoListResult"
+          :key="video.videoId"
         >
-          <button
+          <div>
+            <iframe
+              class="video"
+              id="videoList"
+              title="iframe Example 2"
+              width="400"
+              height="300"
+              style="border: none"
+              :src="video.videoId"
+            ></iframe>
+          </div>
+          <div
+            class="store-button"
             @click="
               isRoutineDetail = true;
               videoURL = video.videoId;
             "
-            class="w-btn-outline w-btn-yellow-outline"
-            type="button"
           >
-            담기
-          </button>
-        </div>
-      </span>
+            <button
+              @click="
+                isRoutineDetail = true;
+                videoURL = video.videoId;
+              "
+              class="w-btn-outline w-btn-yellow-outline"
+              type="button"
+            >
+              담기
+            </button>
+          </div>
+        </span>
+      </div>
+    </div>
+    <div v-if="!allChk">
+      <div class="videos-container" v-if="getDayRoutine.dayRoutineResult">
+        <span
+          class="video-container"
+          v-for="routineVideo in getDayRoutine.dayRoutineResult"
+          :key="routineVideo.videoId"
+        >
+          <div>
+            <iframe
+              class="video"
+              id="videoList"
+              title="iframe Example 2"
+              width="400"
+              height="300"
+              style="border: none"
+              :src="routineVideo.videoId"
+            ></iframe>
+          </div>
+          <div
+            class="store-button"
+            @click="
+              videoURL = routineVideo.videoId;
+              deleteRoutine();
+            "
+          >
+            <button
+              @click="
+                videoURL = routineVideo.videoId;
+                deleteRoutine();
+              "
+              class="w-btn-outline w-btn-yellow-outline"
+              type="button"
+            >
+              삭제
+            </button>
+          </div>
+        </span>
+      </div>
     </div>
   </div>
   <div v-if="isRoutineDetail" id="modalWrap">
@@ -111,7 +152,7 @@
             <div style="display: flex; justify-content: center">
               <button
                 type="submit"
-                style="font-weight: bold; font-size: 30px; color: #777"
+                style="font-weight: bold; font-size: 30px; color: #000000"
               >
                 추가
               </button>
@@ -124,10 +165,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUpdated } from "vue";
 import { getVideoListStore } from "@/stores/youtube.js";
 import { useRoutineStore } from "@/stores/routine.js";
-import router from "@/router";
+import { getDayRoutineStore } from "@/stores/routine.js";
+import { deleteDayRoutineStore } from "@/stores/routine.js";
 
 const num = ref("");
 const day = ref("");
@@ -137,24 +179,19 @@ const end = ref("");
 const data = ref({});
 const videoURL = ref("");
 const perDay = ref("");
+const allChk = ref(true);
 const days = ref(["전체", "월", "화", "수", "목", "금", "토", "일"]);
-
 const routineStore = useRoutineStore();
 const getVideoList = getVideoListStore();
+const getDayRoutine = getDayRoutineStore();
+const deleteDayRoutine = deleteDayRoutineStore();
 const isRoutineDetail = ref(false);
 
-onMounted(() => {
-  getVideoList.videoListMethod();
-});
-
 const getPerDay = function () {
-  if (perDay.value != "전체요일") {
-    router.push({
-      path: "/dayroutine",
-      state: {
-        day: perDay.value,
-      },
-    });
+  if (perDay.value == "전체요일") {
+    allChk.value = true;
+  } else {
+    allChk.value = false;
   }
 };
 
@@ -171,6 +208,25 @@ const storeRoutine = function () {
   isRoutineDetail.value = false;
   routineStore.routineMethod(data.value);
 };
+
+const deleteRoutine = function () {
+  data.value = {
+    userId: sessionStorage.getItem("loginId"),
+    videoId: videoURL.value.split("/").pop(),
+    day: perDay.value,
+  };
+  console.log(data.value);
+  deleteDayRoutine.deleteRoutineMethod(data.value);
+};
+
+onMounted(() => {
+  getVideoList.videoListMethod();
+  getDayRoutine.dayRoutineMethod(perDay.value);
+});
+
+onUpdated(() => {
+  getDayRoutine.dayRoutineMethod(perDay.value);
+});
 </script>
 
 <style scoped>
@@ -180,7 +236,6 @@ const storeRoutine = function () {
   padding-right: 3%;
   padding-bottom: 3%;
   display: flex;
-  position: absolute;
   flex-wrap: wrap;
 }
 
@@ -202,7 +257,7 @@ const storeRoutine = function () {
   display: flex;
   align-items: center;
   height: 300px;
-  background-color: antiquewhite;
+  background-color: #ccc;
   border-radius: 15px;
 }
 
@@ -249,9 +304,9 @@ const storeRoutine = function () {
   height: 700px;
   padding: 30px 50px;
   margin: 0 auto;
-  margin-top: 3%;
+  margin-top: 5%;
   border: 1px solid #777;
-  background-color: antiquewhite;
+  background-color: gray;
 }
 
 #modalContent {
@@ -262,7 +317,7 @@ const storeRoutine = function () {
 #closeBtn {
   float: right;
   font-weight: bold;
-  color: #777;
+  color: black;
   font-size: 50px;
   cursor: pointer;
 }

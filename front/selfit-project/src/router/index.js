@@ -5,7 +5,6 @@ import TodayView from "@/views/TodayView.vue";
 import LogInView from "@/views/LogInView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import MyRoutineView from "@/views/MyRoutineView.vue";
-import DayRoutineView from "@/views/DayRoutineView.vue";
 import AboutUsView from "@/views/AboutUsView.vue";
 import StartView from "@/views/StartView.vue";
 import CompleteView from "@/views/CompleteView.vue";
@@ -53,11 +52,6 @@ const router = createRouter({
       path: "/myroutine",
       name: "myroutine",
       component: MyRoutineView,
-    },
-    {
-      path: "/dayroutine",
-      name: "dayroutine",
-      component: DayRoutineView,
     },
     {
       path: "/complete",

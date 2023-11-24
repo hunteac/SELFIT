@@ -10,9 +10,29 @@
       />
     </div>
   </div>
+  <div class="video-wrapper" v-if="getDayRoutine.dayRoutineResult">
+    <span
+      v-for="routineVideo in getDayRoutine.dayRoutineResult"
+      :key="routineVideo.videoId"
+    >
+      <div>
+        <iframe
+          class="video"
+          id="videoList"
+          title="iframe Example 2"
+          width="400"
+          height="300"
+          style="border: none"
+          :src="routineVideo.videoId"
+        ></iframe>
+      </div>
+    </span>
+  </div>
 </template>
 
 <script setup>
+import { onMounted } from "vue";
+import { getDayRoutineStore } from "@/stores/routine.js";
 import router from "@/router";
 
 const week = new Array(
@@ -25,14 +45,24 @@ const week = new Array(
   "토요일"
 );
 
+const getDayRoutine = getDayRoutineStore();
 const today = new Date().getDay();
 
 const pushStart = function () {
   router.push("/start");
 };
+
+onMounted(() => {
+  getDayRoutine.dayRoutineMethod("금요일");
+});
 </script>
 
 <style scoped>
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .upline {
   display: flex;
   flex-direction: row;

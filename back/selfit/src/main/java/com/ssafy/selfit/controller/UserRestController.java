@@ -61,11 +61,10 @@ public class UserRestController {
 	@PostMapping("/user/login")
 	@ApiOperation(value = "로그인 유저 정보를 확인한다.", response = User.class)
 	public ResponseEntity<?> loginById(@RequestBody User user) {
-		System.out.println(user);
 		User temp = userService.selectUserById(user.getId());
 		
-		if (temp != null && temp.getId().equals(user.getId())) {
-			return new ResponseEntity<String>("success", HttpStatus.OK);
+		if (temp != null && temp.getId().equals(user.getId()) && temp.getPwd().equals(user.getPwd())) {
+			return new ResponseEntity<User>(temp, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 		}
