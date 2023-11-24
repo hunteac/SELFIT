@@ -4,8 +4,11 @@
       <div class="wrap-login100">
         <form v-on:submit.prevent="login" class="login100-form validate-form">
           <span class="login100-form-logo">
-             <img src="@/assets/selfit_logo.png"
-                  alt="SELFIT 로고" class="logo"/>
+            <img
+              src="@/assets/selfit_logo.png"
+              alt="SELFIT 로고"
+              class="logo"
+            />
           </span>
 
           <span class="login100-form-title p-b-34 p-t-27"> Log in </span>
@@ -81,9 +84,9 @@ const login = function () {
 
 <style>
 .container-login100 {
-  background-image: url("src/assets/bg-01.jpg"); /* 배경 이미지 경로 설정 */
+  background-image: url("../../assets/bg-03.jpg");
   background-size: cover; /* 배경 이미지 크기 조절 */
-  opacity: 0.9; /* 투명도 설정 (0.0 완전 투명 ~ 1.0 완전 불투명) */
+  opacity: 1; /* 투명도 설정 (0.0 완전 투명 ~ 1.0 완전 불투명) */
 }
 .logo {
   height: 130px;
@@ -98,12 +101,10 @@ const login = function () {
 body,
 html {
   height: 100%;
-
 }
 
 /*---------------------------------------------*/
 a {
-
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -134,7 +135,6 @@ h6 {
 }
 
 p {
-
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -238,7 +238,6 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-
   font-size: 13px;
   color: #e5e5e5;
   line-height: 1.5;
@@ -323,7 +322,6 @@ iframe {
 }
 
 .login100-form-title {
-
   font-size: 30px;
   color: #fff;
   line-height: 1.2;
@@ -344,7 +342,6 @@ iframe {
 }
 
 .input100 {
-
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
@@ -633,7 +630,6 @@ iframe {
   }
 }
 
-///
 /*[ FONT SIZE ]
 ///////////////////////////////////////////////////////////
 */

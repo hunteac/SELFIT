@@ -5,11 +5,13 @@ import TodayView from "@/views/TodayView.vue";
 import LogInView from "@/views/LogInView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import MyRoutineView from "@/views/MyRoutineView.vue";
+import DayRoutineView from "@/views/DayRoutineView.vue";
 import AboutUsView from "@/views/AboutUsView.vue";
 import StartView from "@/views/StartView.vue";
+import CompleteView from "@/views/CompleteView.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",
@@ -35,7 +37,6 @@ const router = createRouter({
       path: "/today",
       name: "today",
       component: TodayView,
-
     },
     {
       path: "/start",
@@ -52,6 +53,16 @@ const router = createRouter({
       path: "/myroutine",
       name: "myroutine",
       component: MyRoutineView,
+    },
+    {
+      path: "/dayroutine",
+      name: "dayroutine",
+      component: DayRoutineView,
+    },
+    {
+      path: "/complete",
+      name: "complete",
+      component: CompleteView,
     },
   ],
 });

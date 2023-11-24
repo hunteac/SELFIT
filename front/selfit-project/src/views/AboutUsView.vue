@@ -1,9 +1,7 @@
 <template>
   <h1>SSAFY 10기 서울 8반 사랑해 💙🧡💛</h1>
   <div class="about-us">
-    <div class="div">
-
-    </div>
+    <div class="div"></div>
   </div>
 </template>
 
@@ -14,10 +12,9 @@ export default {
 </script>
 
 <style>
-h1{
+h1 {
   margin-left: 31%;
   margin-bottom: 30px;
-
 }
 
 .about-us {
@@ -29,7 +26,11 @@ h1{
 }
 
 .about-us .div {
-  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('src/assets/aboutus.jpg'); /* 배경 이미지에 투명도를 적용 */
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url("src/assets/aboutus.jpg"); /* 배경 이미지에 투명도를 적용 */
   background-size: cover; /* 배경 이미지 크기 조절 */
   height: 1024px;
   position: relative;
@@ -37,7 +38,4 @@ h1{
   display: flex;
   flex-direction: column;
 }
-
-
-
 </style>

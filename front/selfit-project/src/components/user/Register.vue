@@ -140,7 +140,7 @@ const join = function () {
 
 <style>
 .container-login100 {
-  background-image: url("src/assets/bg-01.jpg"); /* 배경 이미지 경로 설정 */
+  background-image: url("../../assets/bg-02.jpg"); /* 배경 이미지 경로 설정 */
   background-size: cover; /* 배경 이미지 크기 조절 */
   opacity: 0.8; /* 투명도 설정 (0.0 완전 투명 ~ 1.0 완전 불투명) */
 }

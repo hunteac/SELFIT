@@ -7,7 +7,7 @@
         class="video-wrapper"
       >
         <iframe
-          v-if="routineVideo.num === num"
+          v-if="routineVideo.num == num"
           id="player"
           title="player"
           width="1000"
@@ -21,6 +21,7 @@
             routineVideo.end
           "
         ></iframe>
+        <div v-if="listChk">등록된 리스트가 없습니다.</div>
       </span>
     </div>
   </div>
@@ -29,6 +30,7 @@
 <script setup>
 import { ref, onMounted, onUpdated } from "vue";
 import { getDayRoutineStore } from "@/stores/routine.js";
+import router from "@/router";
 
 const getDayRoutine = getDayRoutineStore();
 
@@ -42,12 +44,35 @@ const week = new Array(
   "토요일"
 );
 
+const listChk = ref(false);
 const today = new Date().getDay();
 const todayLabel = week[today];
-var num = 1;
+var num = sessionStorage.getItem("num");
 
 onMounted(() => {
   getDayRoutine.dayRoutineMethod(todayLabel);
+});
+
+onUpdated(() => {
+  var temp = sessionStorage.getItem("num") - 1;
+
+  if (getDayRoutine.dayRoutineResult.length != 0) {
+    const result = getDayRoutine.dayRoutineResult.sort((a, b) => a.num - b.num);
+    if (temp < result.length) {
+      var cnt = result[[temp]].end - result[[temp]].start;
+
+      setTimeout(() => {
+        temp = sessionStorage.getItem("num");
+        sessionStorage.setItem("num", ++temp);
+        location.reload();
+      }, cnt * 1000);
+    } else {
+      sessionStorage.setItem("num", 1);
+      router.push("/complete");
+    }
+  } else {
+    listChk = true;
+  }
 });
 </script>
 
@@ -59,6 +84,5 @@ onMounted(() => {
 .fit-per-day {
   border: 1px solid #ccc; /* 박스 스타일 */
   padding: 10px;
-
 }
 </style>

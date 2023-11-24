@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const useRoutineStore = defineStore("routine", () => {
   const router = useRouter();
-  const routineResult = ref("");
+  const routineResult = ref([]);
   const routineMethod = function (data) {
     let routineVideo = {
       userId: data.userId,
@@ -31,6 +31,7 @@ export const useRoutineStore = defineStore("routine", () => {
           alert("루틴 등록을 실패했습니다.");
         }
         routineResult.value = res.data;
+        routineResult;
       });
   };
   return {
@@ -55,5 +56,28 @@ export const getDayRoutineStore = defineStore("getDayRoutine", () => {
   return {
     dayRoutineResult,
     dayRoutineMethod,
+  };
+});
+
+export const deleteDayRoutineStore = defineStore("deleteDayRoutine", () => {
+  const router = useRouter();
+  const deleteRoutineResult = ref("");
+  const deleteRoutineMethod = function (data) {
+    console.log(data.value);
+    axios
+      .delete(
+        `http://localhost:8080/routinevideoapi/routinevideo/${sessionStorage.getItem(
+          "loginId"
+        )}/${data.videoId}/${data.day}`
+      )
+      .then((res) => {
+        alert("영상이 성공적으로 삭제됐습니다.");
+        deleteRoutineResult.value = res.data;
+        router.push("/dayroutine");
+      });
+  };
+  return {
+    deleteRoutineResult,
+    deleteRoutineMethod,
   };
 });

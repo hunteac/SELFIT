@@ -3,7 +3,6 @@ import { defineStore } from "pinia";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
-
 const REST_USER_API = "http://localhost:8080/userapi/user";
 
 export const useJoinStore = defineStore("join", () => {
@@ -38,6 +37,7 @@ export const useJoinStore = defineStore("join", () => {
 
 export const useLoginStore = defineStore("login", () => {
   const loginId = ref("");
+  const userName = ref("");
   const router = useRouter();
   const loginResult = ref("");
   const loginUser = ref("");
@@ -52,12 +52,15 @@ export const useLoginStore = defineStore("login", () => {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        if (res.data == "success") {
+        if (res.data.id == data.id) {
           alert("로그인 성공");
           loginId.value = id;
-          router.push("/today");
-          loginResult.value = "success";
+          userName.value = res.data.userName;
           sessionStorage.setItem("loginId", loginId.value);
+          sessionStorage.setItem("userName", userName.value);
+          sessionStorage.setItem("num", 1);
+          location.href = "/";
+          loginResult.value = "success";
         } else {
           alert("로그인 실패");
           loginResult.value = "fail";
@@ -68,7 +71,8 @@ export const useLoginStore = defineStore("login", () => {
   const logoutMethod = function () {
     let ask = confirm("로그아웃 하시겠습니까?");
     if (ask) {
-      loginId.value = "";
+      sessionStorage.setItem("loginId", "");
+      sessionStorage.setItem("userName", "");
       router.push("/");
     }
   };

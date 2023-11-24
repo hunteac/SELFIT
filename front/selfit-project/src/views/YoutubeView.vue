@@ -16,7 +16,4 @@ import YoutubeVideoSearch from "@/components/youtube/YoutubeVideoSearch.vue";
 import YoutubeVideoList from "@/components/youtube/YoutubeVideoList.vue";
 </script>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

@@ -1,36 +1,45 @@
 <template>
   <div>
     <span v-if="chk">
-      <THeHeaderNav />
+      <TheHeaderNav />
     </span>
   </div>
   <span class="updown">
     <button @click="chk = !chk">{{ chk ? "ㅡ" : "ㅡ" }}</button>
   </span>
-  <hr>
+  <hr />
 
   <br />
   <RouterView />
 </template>
 
 <script setup>
-import THeHeaderNav from "./components/common/THeHeaderNav.vue";
+import TheHeaderNav from "@/components/common/TheHeaderNav.vue";
 import { ref } from "vue";
-const chk = ref(true);
+const chk = ref(false);
+
+if (
+  sessionStorage.length === 0 ||
+  (sessionStorage.getItem("loginId") == "" &&
+    sessionStorage.getItem("userName") == "") ||
+  (sessionStorage.getItem("loginId") == null &&
+    sessionStorage.getItem("userName") == null)
+) {
+  chk.value = false;
+} else {
+  chk.value = true;
+}
 </script>
 
 <style>
-
 @font-face {
-  font-family:'ChosunNm';
-  src: url('assets/fonts/ChosunNm.ttf') format('truetype');
+  font-family: "ChosunNm";
+  src: url("assets/fonts/ChosunNm.ttf") format("truetype");
   font-weight: 400;
 }
 body {
-  font-family: 'ChosunNm', sans-serif !important;
+  font-family: "ChosunNm", sans-serif !important;
 }
-
-
 
 .updown {
   display: flex;
@@ -40,6 +49,4 @@ body {
   color: grey;
   font-size: 30px;
 }
-
-
 </style>

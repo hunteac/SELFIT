@@ -1,16 +1,17 @@
 <template>
+  <FitPerStart />
   <div class="container">
     <button class="button" @click="pushToday">포기하기</button>
-
   </div>
+  <br />
 </template>
 
 <script setup>
+import FitPerStart from "@/components/today/FitPerStart.vue";
 import router from "@/router";
 const pushToday = function () {
-  router.push("today");
+  router.push("/today");
 };
-
 </script>
 
 <style scoped>
@@ -20,7 +21,7 @@ const pushToday = function () {
   align-items: center;
 }
 .button {
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: blue; /* 기본 배경색 */
   color: white; /* 텍스트 색상 */
 
